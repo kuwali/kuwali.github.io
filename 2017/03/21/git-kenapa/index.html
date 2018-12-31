@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-180x180.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-32x32.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo-16x16.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo-500x500.png?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":16,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Apa sih yang membuat Git berbeda dengan Version Control yang lainnya?   Perbedaan antara Git dengan VCS lainnya terlihat pada data apa yang disimpan sebagai pencatatan perubahan file. Pada VCS yang l">
+<meta name="keywords" content="Version Control,Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git, Kenapa?">
+<meta property="og:url" content="http://kuwali.github.io/2017/03/21/git-kenapa/index.html">
+<meta property="og:site_name" content="kowan&#39;s note">
+<meta property="og:description" content="Apa sih yang membuat Git berbeda dengan Version Control yang lainnya?   Perbedaan antara Git dengan VCS lainnya terlihat pada data apa yang disimpan sebagai pencatatan perubahan file. Pada VCS yang l">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*6ywHRvYfgRVCSL_4xh1Mfw.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*sbNdIxRs9QkLZIDvuwCOtQ.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*k8fuw0YYi7q98lUId2Iyfg.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*2wgteDVDEzxSVxY9DRRGFA.jpeg">
+<meta property="og:updated_time" content="2018-12-31T18:59:43.521Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git, Kenapa?">
+<meta name="twitter:description" content="Apa sih yang membuat Git berbeda dengan Version Control yang lainnya?   Perbedaan antara Git dengan VCS lainnya terlihat pada data apa yang disimpan sebagai pencatatan perubahan file. Pada VCS yang l">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1600/1*6ywHRvYfgRVCSL_4xh1Mfw.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://kuwali.github.io/2017/03/21/git-kenapa/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Git, Kenapa? | kowan's note</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131468917-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131468917-1');
+</script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kowan's note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Loading ...</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kuwali.github.io/2017/03/21/git-kenapa/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kustiawanto Halim">
+      <meta itemprop="description" content="Personal Blog">
+      <meta itemprop="image" content="https://instagram.fkno3-1.fna.fbcdn.net/vp/6adf83be365b08f6c3e290ecf408a525/5CD7B1B3/t51.2885-19/s320x320/35534218_194410941230217_6917300677114855424_n.jpg?_nc_ht=instagram.fkno3-1.fna.fbcdn.net&_nc_cat=109">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kowan's note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Git, Kenapa?
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-03-21 00:00:00" itemprop="dateCreated datePublished" datetime="2017-03-21T00:00:00+07:00">2017-03-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-01 01:59:43" itemprop="dateModified" datetime="2019-01-01T01:59:43+07:00">2019-01-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-science/note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Apa sih yang membuat Git berbeda dengan Version Control yang lainnya? </p>
+</blockquote>
+<p>Perbedaan antara Git dengan VCS lainnya terlihat pada data apa yang disimpan sebagai pencatatan perubahan file. Pada VCS yang lainnya, data akan disimpan berupa list dari perubahan file-based. Maksudnya adalah sistem ini akan menyimpan informasi berupa sekumpulan file lalu perubahan apa saja yang kita lakukan terhadap file tersebut.</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*6ywHRvYfgRVCSL_4xh1Mfw.png" alt="Menyimpan file dan perubahan yang dilakukan terhadap file tersebut"></p>
+<p>Sementara itu, apa yang dilakukan oleh Git dalam pencatatan perubahan pada file? Berbeda dengan sistem VCS lainnya, Git akan menyimpan data yang ada sebagai snapshots miniatur keseluruhan sistem file. Maksudnya, ketika melakukan commit atau menyimpan state dari project kedalam Git, maka keseluruhan file yang ada akan disimpan gambarannya kedalam sebuah snapshots. Tentu saja terdapat penghematan dari sisi penyimpanan yang dilakukan Git, yaitu untuk file yang sama tidak akan disimpan ulang, melainkan hanya akan disimpan reference link menuju file sebelumnya.</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*sbNdIxRs9QkLZIDvuwCOtQ.png" alt="Penyimpanan berupa snapshots dari keseluruhan project"></p>
+<p>Hal inilah yang menjadi pembeda antara Git dengan VCS lainnya, dimana Git akan menyerupai mini file system yang dapat dilengkapi dengan tools keren lainnya, dibandingkan dengan VCS sederhana lainnya.</p>
+<h2 id="Git-Workflow"><a href="#Git-Workflow" class="headerlink" title="Git Workflow"></a>Git Workflow</h2><p>Hal yang sangat penting untuk dipahami dari Git adalah workflow dari Git itu sendiri. Terdapat tiga keadaan yang harus diingat pada Git yaitu: commited, modified, dan staged. Commited adalah ketika data yang ada sudah secara aman disimpan pada database local git. Modified adalah kondisi dimana kita melakukan perubahan terhadap data yang ada tetapi belum melakukan commit. Staged adalah kondisi dimana kita sudah menandai data yang diubah pada versi saat ini, untuk menjadi commit snapshot selanjutnya.</p>
+<p>Setelah memahami ketiga keadaan diatas, maka kita akan mendapatkan tiga bagian utama dari Git project, yaitu Git Directory, working tree, dan staging area.</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*k8fuw0YYi7q98lUId2Iyfg.png" alt="Git Workflow"></p>
+<p>Git directory merupakan tempat dimana Git menyimpan metadata dan object database untuk project kita. Ini adalah bagian terpenting dari Git dan ini adalah hal yang kita pindahkan ketika kita melakukan clone repository.</p>
+<p>Working tree adalah sebuah checkout dari suatu versi project yang ada. File yang ada akan di-pull dari Git directory dan ditempatkan pada folder dimana kita akan bekerja untuk melakukan modifikasi file.</p>
+<p>Staging area adalah sebuah file, biasanya berada pada Git directory. File ini akan menyimpan informasi mengenai data mana saja yang akan masuk kedalam commit berikutnya. File ini biasanya disebut “index”, tapi biasa juga disebut staging area.</p>
+<p>Apabila dirangkum, secara umum berikut adalah workflow dari Git:</p>
+<ol>
+<li>Melakukan modifikasi terhadap file yang ada pada working tree.</li>
+<li>Melakukan staging terhadap file yang dimodifikasi, menambahkan snapshots pada staging area.</li>
+<li>Melakukan commit, dimana akan menyimpan data snapshot yang ada pada staging area untuk disimpan secara permanent pada Git directory.</li>
+</ol>
+<p>Apabila terdapat suatu versi file pada Git directory, maka file itu dinyatakan commited. Apabila file yang tadinya dimodifikasi dan ditambahkan ke staging area, maka file tersebut dinyatakan staged. Apabila file tersebut belum di staged, maka dia dinyatakan modified.</p>
+<h2 id="I-know-the-theory-then"><a href="#I-know-the-theory-then" class="headerlink" title="I know the theory, then?"></a>I know the theory, then?</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*2wgteDVDEzxSVxY9DRRGFA.jpeg" alt="meme"></p>
+<p>Setelah mengetahui teori penggunaan dari Git, saya akan menjelaskan beberapa hal dasar yang harus dipahami dari Git. Bisa dikatakan ini adalah cheatsheet Git sederhana.</p>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><ul>
+<li>Untuk mengetahui lokasi Git diinstal <code>which git</code></li>
+<li>Mengetahui versi Git terinstall <code>git --version</code></li>
+<li>Help <code>git help</code></li>
+</ul>
+<h3 id="General"><a href="#General" class="headerlink" title="General"></a>General</h3><ul>
+<li>Melakukan inisialisasi <code>git init</code></li>
+<li>Melakukan staging terhadap seluruh file <code>git add .</code></li>
+<li>Melakukan staging terhadap file tertentu <code>git add index.html</code></li>
+<li>Melakukan commit terhadap perubahan yang ada <code>git commit -m &quot;Message&quot;</code></li>
+<li>Menghapus file dari Git <code>git rm index.html</code></li>
+<li>Melakukan undo terhadap commit yang sudah dilakukan <code>git checkout -- index.html</code></li>
+<li>Melakukan restore file dari commit tertentU <code>git checkout 6eb715d -- index.html</code></li>
+</ul>
+<h3 id="Reset"><a href="#Reset" class="headerlink" title="Reset"></a>Reset</h3><ul>
+<li>Kembali pada commit tertentu <code>git revert 073791e7dd71b90daa853b2c5acc2c925f02dbc6</code></li>
+<li>Undo commit terakhir yang dilakukan <code>git reset --soft ~HEAD</code></li>
+</ul>
+<h3 id="Branch"><a href="#Branch" class="headerlink" title="Branch"></a>Branch</h3><ul>
+<li>Melihat branch apa saja yang ada <code>git branch</code></li>
+<li>Membuat sebuah branch baru <code>git branch branchname</code></li>
+<li>Pindah ke branch tertentu <code>git checkout branchname</code></li>
+<li>Membuat dan pindah ke branch baru <code>git checkout -b branchname</code></li>
+<li>Melakukan penamaan ulang pada suatu branch <code>git branch -m branchname new_branchname</code> atau <code>git branch --move branchname* new_branchname</code></li>
+<li>Menghapus branch yang ada <code>git branch -D branch_to_delete</code></li>
+</ul>
+<h3 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3><ul>
+<li>Melakukan merge (apabila terjadi fast forward) <code>git merge branchname</code></li>
+<li>Merge ke master (jika fast forward) <code>git merge --ff-only branchname</code></li>
+<li>Merge ke master (mode paksa) <code>git merge --no-ff branchname</code></li>
+<li>Menghentikan merge (jika konflik) <code>git merge --abort</code></li>
+<li>Menghentikan merge (jika konflik) <code>git reset --merge // untuk v1.7.4</code></li>
+<li>Melakukan merge hanya pada commit tertentu <code>git cherry-pick 073791e7</code></li>
+</ul>
+<h3 id="Stash"><a href="#Stash" class="headerlink" title="Stash"></a>Stash</h3><ul>
+<li>Memasukkan file ke dalam stash <code>git stash save &quot;Message&quot;</code></li>
+<li>Melihat stash <code>git stash list</code></li>
+<li>Melihat status stash <code>git stash show stash@{0}</code></li>
+<li>Melihat perubahan stash <code>git stash show -p stash@{0}</code></li>
+<li>Menghapus item custom stash <code>git stash drop stash@{0}</code></li>
+<li>Menghapus stash keseluruhan <code>git stash clear</code></li>
+</ul>
+<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><ul>
+<li>Melakukan komparasi atas file yang dimodifikasi <code>git diff</code></li>
+<li>Melakukan komparasi pada modified file dan memberikan highlight pada perubahan yang ada <code>git diff --color-words index.html</code></li>
+<li>Komparasi modified file pada tahap staging <code>git diff --staged</code></li>
+<li>Melakukan komparasi branch <code>git diff master..branchname</code></li>
+<li>Melakukan komparasi commit <code>git diff 6eb715d git diff 6eb715d..HEAD git diff 6eb715d..537a09f</code></li>
+<li>Komparasi file pada suatu commit <code>git diff 6eb715d index.html git diff 6eb715d..537a09f index.html</code></li>
+</ul>
+<h2 id="Gitignore"><a href="#Gitignore" class="headerlink" title="Gitignore"></a>Gitignore</h2><p>Adalah sekumpulan file yang akan di ignore oleh Git. Template yang biasa digunakan dalam Gitignore ada di <a href="https://github.com/github/gitignore" target="_blank" rel="noopener">https://github.com/github/gitignore</a></p>
+<h2 id="Kesimpulan"><a href="#Kesimpulan" class="headerlink" title="Kesimpulan"></a>Kesimpulan</h2><p>Penggunaan Git akan sangat membantu pekerjaan terutama programmer dan designer ataupun pekerjaan lainnya yang membutuhkan versioning dalam pekerjaannya sehingga mempermudah pekerjaan apabila ingin melakukan perubahan atau memperhatikan perubahan yang ada dari file-file yang digunakan.</p>
+<p>Referensi: <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control" target="_blank" rel="noopener">https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/version-control/" rel="tag"># Version Control</a>
+          
+            <a href="/tags/git/" rel="tag"># Git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/21/version-control-kenapa/" rel="next" title="Version Control, Kenapa?">
+                <i class="fa fa-chevron-left"></i> Version Control, Kenapa?
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://instagram.fkno3-1.fna.fbcdn.net/vp/6adf83be365b08f6c3e290ecf408a525/5CD7B1B3/t51.2885-19/s320x320/35534218_194410941230217_6917300677114855424_n.jpg?_nc_ht=instagram.fkno3-1.fna.fbcdn.net&_nc_cat=109" alt="Kustiawanto Halim">
+            
+              <p class="site-author-name" itemprop="name">Kustiawanto Halim</p>
+              <p class="site-description motion-element" itemprop="description">Personal Blog</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/kuwali" title="GitHub &rarr; https://github.com/kuwali" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:kustiawanto.halim@gmail.com" title="E-Mail &rarr; mailto:kustiawanto.halim@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/kuwali_bakwan" title="Twitter &rarr; https://twitter.com/kuwali_bakwan" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/kuwali_bakwan" title="Instagram &rarr; https://instagram.com/kuwali_bakwan" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-Workflow"><span class="nav-number">1.</span> <span class="nav-text">Git Workflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-know-the-theory-then"><span class="nav-number">2.</span> <span class="nav-text">I know the theory, then?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup"><span class="nav-number">2.1.</span> <span class="nav-text">Setup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#General"><span class="nav-number">2.2.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reset"><span class="nav-number">2.3.</span> <span class="nav-text">Reset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Branch"><span class="nav-number">2.4.</span> <span class="nav-text">Branch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge"><span class="nav-number">2.5.</span> <span class="nav-text">Merge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stash"><span class="nav-number">2.6.</span> <span class="nav-text">Stash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compare"><span class="nav-number">2.7.</span> <span class="nav-text">Compare</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitignore"><span class="nav-number">3.</span> <span class="nav-text">Gitignore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kesimpulan"><span class="nav-number">4.</span> <span class="nav-text">Kesimpulan</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kustiawanto Halim</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c24fe6f29690323" async="async"></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

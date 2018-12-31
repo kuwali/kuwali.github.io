@@ -104,23 +104,25 @@
 
 
 
-  <meta name="description" content="Personal Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="kowan&#39;s note">
-<meta property="og:url" content="http://kuwali.github.io/index.html">
+  <meta name="description" content="Migration script adalah script yang digunakan untuk memudahkan kita dalam melakukan migrasi baik berupa environment atau hanya sekedar database. Dalam studi kasus PPL kali ini, kelompok kami hanya ak">
+<meta name="keywords" content="PPL,Umzug,Sequelize,Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Migration Script menggunakan [Umzug] untuk [Sequelize]">
+<meta property="og:url" content="http://kuwali.github.io/2017/03/07/migration-script-menggunakan-umzug-untuk-sequelize/index.html">
 <meta property="og:site_name" content="kowan&#39;s note">
-<meta property="og:description" content="Personal Blog">
+<meta property="og:description" content="Migration script adalah script yang digunakan untuk memudahkan kita dalam melakukan migrasi baik berupa environment atau hanya sekedar database. Dalam studi kasus PPL kali ini, kelompok kami hanya ak">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-12-31T12:48:57.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kowan&#39;s note">
-<meta name="twitter:description" content="Personal Blog">
+<meta name="twitter:title" content="Migration Script menggunakan [Umzug] untuk [Sequelize]">
+<meta name="twitter:description" content="Migration script adalah script yang digunakan untuk memudahkan kita dalam melakukan migrasi baik berupa environment atau hanya sekedar database. Dalam studi kasus PPL kali ini, kelompok kami hanya ak">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kuwali.github.io/">
+  <link rel="canonical" href="http://kuwali.github.io/2017/03/07/migration-script-menggunakan-umzug-untuk-sequelize/">
 
 
 
@@ -130,7 +132,7 @@
   };
 </script>
 
-  <title>kowan's note</title>
+  <title>Migration Script menggunakan [Umzug] untuk [Sequelize] | kowan's note</title>
   
 
 
@@ -187,8 +189,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -230,7 +231,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -343,456 +344,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kuwali.github.io/2017/03/21/git-kenapa/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kustiawanto Halim">
-      <meta itemprop="description" content="Personal Blog">
-      <meta itemprop="image" content="https://instagram.fkno3-1.fna.fbcdn.net/vp/6adf83be365b08f6c3e290ecf408a525/5CD7B1B3/t51.2885-19/s320x320/35534218_194410941230217_6917300677114855424_n.jpg?_nc_ht=instagram.fkno3-1.fna.fbcdn.net&_nc_cat=109">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kowan's note">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/03/21/git-kenapa/" class="post-title-link" itemprop="url">Git, Kenapa?</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-03-21 00:00:00" itemprop="dateCreated datePublished" datetime="2017-03-21T00:00:00+07:00">2017-03-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-01 01:59:43" itemprop="dateModified" datetime="2019-01-01T01:59:43+07:00">2019-01-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-science/note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Apa sih yang membuat Git berbeda dengan Version Control yang lainnya? </p>
-</blockquote>
-<p>Perbedaan antara Git dengan VCS lainnya terlihat pada data apa yang disimpan sebagai pencatatan perubahan file. Pada VCS yang lainnya, data akan disimpan berupa list dari perubahan file-based. Maksudnya adalah sistem ini akan menyimpan informasi berupa sekumpulan file lalu perubahan apa saja yang kita lakukan terhadap file tersebut.</p>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*6ywHRvYfgRVCSL_4xh1Mfw.png" alt="Menyimpan file dan perubahan yang dilakukan terhadap file tersebut"></p>
-<p>Sementara itu, apa yang dilakukan oleh Git dalam pencatatan perubahan pada file? Berbeda dengan sistem VCS lainnya, Git akan menyimpan data yang ada sebagai snapshots miniatur keseluruhan sistem file. Maksudnya, ketika melakukan commit atau menyimpan state dari project kedalam Git, maka keseluruhan file yang ada akan disimpan gambarannya kedalam sebuah snapshots. Tentu saja terdapat penghematan dari sisi penyimpanan yang dilakukan Git, yaitu untuk file yang sama tidak akan disimpan ulang, melainkan hanya akan disimpan reference link menuju file sebelumnya.</p>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*sbNdIxRs9QkLZIDvuwCOtQ.png" alt="Penyimpanan berupa snapshots dari keseluruhan project"></p>
-<p>Hal inilah yang menjadi pembeda antara Git dengan VCS lainnya, dimana Git akan menyerupai mini file system yang dapat dilengkapi dengan tools keren lainnya, dibandingkan dengan VCS sederhana lainnya.</p>
-<h2 id="Git-Workflow"><a href="#Git-Workflow" class="headerlink" title="Git Workflow"></a>Git Workflow</h2><p>Hal yang sangat penting untuk dipahami dari Git adalah workflow dari Git itu sendiri. Terdapat tiga keadaan yang harus diingat pada Git yaitu: commited, modified, dan staged. Commited adalah ketika data yang ada sudah secara aman disimpan pada database local git. Modified adalah kondisi dimana kita melakukan perubahan terhadap data yang ada tetapi belum melakukan commit. Staged adalah kondisi dimana kita sudah menandai data yang diubah pada versi saat ini, untuk menjadi commit snapshot selanjutnya.</p>
-<p>Setelah memahami ketiga keadaan diatas, maka kita akan mendapatkan tiga bagian utama dari Git project, yaitu Git Directory, working tree, dan staging area.</p>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*k8fuw0YYi7q98lUId2Iyfg.png" alt="Git Workflow"></p>
-<p>Git directory merupakan tempat dimana Git menyimpan metadata dan object database untuk project kita. Ini adalah bagian terpenting dari Git dan ini adalah hal yang kita pindahkan ketika kita melakukan clone repository.</p>
-<p>Working tree adalah sebuah checkout dari suatu versi project yang ada. File yang ada akan di-pull dari Git directory dan ditempatkan pada folder dimana kita akan bekerja untuk melakukan modifikasi file.</p>
-<p>Staging area adalah sebuah file, biasanya berada pada Git directory. File ini akan menyimpan informasi mengenai data mana saja yang akan masuk kedalam commit berikutnya. File ini biasanya disebut “index”, tapi biasa juga disebut staging area.</p>
-<p>Apabila dirangkum, secara umum berikut adalah workflow dari Git:</p>
-<ol>
-<li>Melakukan modifikasi terhadap file yang ada pada working tree.</li>
-<li>Melakukan staging terhadap file yang dimodifikasi, menambahkan snapshots pada staging area.</li>
-<li>Melakukan commit, dimana akan menyimpan data snapshot yang ada pada staging area untuk disimpan secara permanent pada Git directory.</li>
-</ol>
-<p>Apabila terdapat suatu versi file pada Git directory, maka file itu dinyatakan commited. Apabila file yang tadinya dimodifikasi dan ditambahkan ke staging area, maka file tersebut dinyatakan staged. Apabila file tersebut belum di staged, maka dia dinyatakan modified.</p>
-<h2 id="I-know-the-theory-then"><a href="#I-know-the-theory-then" class="headerlink" title="I know the theory, then?"></a>I know the theory, then?</h2><p><img src="https://cdn-images-1.medium.com/max/1600/1*2wgteDVDEzxSVxY9DRRGFA.jpeg" alt="meme"></p>
-<p>Setelah mengetahui teori penggunaan dari Git, saya akan menjelaskan beberapa hal dasar yang harus dipahami dari Git. Bisa dikatakan ini adalah cheatsheet Git sederhana.</p>
-<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><ul>
-<li>Untuk mengetahui lokasi Git diinstal <code>which git</code></li>
-<li>Mengetahui versi Git terinstall <code>git --version</code></li>
-<li>Help <code>git help</code></li>
-</ul>
-<h3 id="General"><a href="#General" class="headerlink" title="General"></a>General</h3><ul>
-<li>Melakukan inisialisasi <code>git init</code></li>
-<li>Melakukan staging terhadap seluruh file <code>git add .</code></li>
-<li>Melakukan staging terhadap file tertentu <code>git add index.html</code></li>
-<li>Melakukan commit terhadap perubahan yang ada <code>git commit -m &quot;Message&quot;</code></li>
-<li>Menghapus file dari Git <code>git rm index.html</code></li>
-<li>Melakukan undo terhadap commit yang sudah dilakukan <code>git checkout -- index.html</code></li>
-<li>Melakukan restore file dari commit tertentU <code>git checkout 6eb715d -- index.html</code></li>
-</ul>
-<h3 id="Reset"><a href="#Reset" class="headerlink" title="Reset"></a>Reset</h3><ul>
-<li>Kembali pada commit tertentu <code>git revert 073791e7dd71b90daa853b2c5acc2c925f02dbc6</code></li>
-<li>Undo commit terakhir yang dilakukan <code>git reset --soft ~HEAD</code></li>
-</ul>
-<h3 id="Branch"><a href="#Branch" class="headerlink" title="Branch"></a>Branch</h3><ul>
-<li>Melihat branch apa saja yang ada <code>git branch</code></li>
-<li>Membuat sebuah branch baru <code>git branch branchname</code></li>
-<li>Pindah ke branch tertentu <code>git checkout branchname</code></li>
-<li>Membuat dan pindah ke branch baru <code>git checkout -b branchname</code></li>
-<li>Melakukan penamaan ulang pada suatu branch <code>git branch -m branchname new_branchname</code> atau <code>git branch --move branchname* new_branchname</code></li>
-<li>Menghapus branch yang ada <code>git branch -D branch_to_delete</code></li>
-</ul>
-<h3 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3><ul>
-<li>Melakukan merge (apabila terjadi fast forward) <code>git merge branchname</code></li>
-<li>Merge ke master (jika fast forward) <code>git merge --ff-only branchname</code></li>
-<li>Merge ke master (mode paksa) <code>git merge --no-ff branchname</code></li>
-<li>Menghentikan merge (jika konflik) <code>git merge --abort</code></li>
-<li>Menghentikan merge (jika konflik) <code>git reset --merge // untuk v1.7.4</code></li>
-<li>Melakukan merge hanya pada commit tertentu <code>git cherry-pick 073791e7</code></li>
-</ul>
-<h3 id="Stash"><a href="#Stash" class="headerlink" title="Stash"></a>Stash</h3><ul>
-<li>Memasukkan file ke dalam stash <code>git stash save &quot;Message&quot;</code></li>
-<li>Melihat stash <code>git stash list</code></li>
-<li>Melihat status stash <code>git stash show stash@{0}</code></li>
-<li>Melihat perubahan stash <code>git stash show -p stash@{0}</code></li>
-<li>Menghapus item custom stash <code>git stash drop stash@{0}</code></li>
-<li>Menghapus stash keseluruhan <code>git stash clear</code></li>
-</ul>
-<h3 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h3><ul>
-<li>Melakukan komparasi atas file yang dimodifikasi <code>git diff</code></li>
-<li>Melakukan komparasi pada modified file dan memberikan highlight pada perubahan yang ada <code>git diff --color-words index.html</code></li>
-<li>Komparasi modified file pada tahap staging <code>git diff --staged</code></li>
-<li>Melakukan komparasi branch <code>git diff master..branchname</code></li>
-<li>Melakukan komparasi commit <code>git diff 6eb715d git diff 6eb715d..HEAD git diff 6eb715d..537a09f</code></li>
-<li>Komparasi file pada suatu commit <code>git diff 6eb715d index.html git diff 6eb715d..537a09f index.html</code></li>
-</ul>
-<h2 id="Gitignore"><a href="#Gitignore" class="headerlink" title="Gitignore"></a>Gitignore</h2><p>Adalah sekumpulan file yang akan di ignore oleh Git. Template yang biasa digunakan dalam Gitignore ada di <a href="https://github.com/github/gitignore" target="_blank" rel="noopener">https://github.com/github/gitignore</a></p>
-<h2 id="Kesimpulan"><a href="#Kesimpulan" class="headerlink" title="Kesimpulan"></a>Kesimpulan</h2><p>Penggunaan Git akan sangat membantu pekerjaan terutama programmer dan designer ataupun pekerjaan lainnya yang membutuhkan versioning dalam pekerjaannya sehingga mempermudah pekerjaan apabila ingin melakukan perubahan atau memperhatikan perubahan yang ada dari file-file yang digunakan.</p>
-<p>Referensi: <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control" target="_blank" rel="noopener">https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kuwali.github.io/2017/03/21/version-control-kenapa/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kustiawanto Halim">
-      <meta itemprop="description" content="Personal Blog">
-      <meta itemprop="image" content="https://instagram.fkno3-1.fna.fbcdn.net/vp/6adf83be365b08f6c3e290ecf408a525/5CD7B1B3/t51.2885-19/s320x320/35534218_194410941230217_6917300677114855424_n.jpg?_nc_ht=instagram.fkno3-1.fna.fbcdn.net&_nc_cat=109">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kowan's note">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/03/21/version-control-kenapa/" class="post-title-link" itemprop="url">Version Control, Kenapa?</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-03-21 00:00:00" itemprop="dateCreated datePublished" datetime="2017-03-21T00:00:00+07:00">2017-03-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-31 19:57:01" itemprop="dateModified" datetime="2018-12-31T19:57:01+07:00">2018-12-31</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-science/note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Pada judul dari blog ini sengaja digunakan kata tanya kenapa. Lalu kenapa? Kenapa Version Control? Dalam post kali ini saya akan mencoba menjelaskan kenapa dan ada apa dengan Version Control.</p>
-</blockquote>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*0Ksf6bzzbqHmtykyCQQTYQ.jpeg" alt="Under Version Control, Your Source Must Be"></p>
-<h1 id="Version-Control-itu-apa"><a href="#Version-Control-itu-apa" class="headerlink" title="Version Control itu apa?"></a>Version Control itu apa?</h1><p>Version control sejatinya adalah sistem yang dapat menyimpan perubahan yang dilakukan terhadap suatu file ataupun sekumpulan file, sehingga kita dapat melakukan mengatur versi dari file tersebut. Maksudnya seperti apa? Secara sederhana kita dapat menganggap Version Control adalah sistem yang akan mencatat setiap perubahan yang kita lakukan terhadap file yang ada, lalu dengan adanya catatan ini, kita dapat menggunakannya untuk merubah versi file yang ada (seperti kembali ke versi sebelumnya).</p>
-<p>Version Control System akan sangat bermanfaat apabila kita bekerja pada lingkungan yang sangat fragile dimana akan sering melakukan perubahan terhadap versi dari file yang ada menyesuaikan dengan kondisi, seperti source code. Pentingnya pemanfaatan VCS akan terlihat apabila mengerjakan sebuah project secara bersama-sama dalam team.<br>Local vs Centralized vs Distributed VCS</p>
-<p>Penggunaan local VCS biasa digunakan oleh banyak orang untuk melakukan pencatatan terhadap perubahan file yang dilakukan. Hal ini berangkat dari masalah yang ada, yaitu tanpa adanya pencatatan, maka untuk melakukan versioning seseorang harus menyimpan beberapa versi file yang ada pada folder yang berbeda dan memindahkannya secara manual. Tapi semenjak adanya Local VCS, kita tidak perlu melakukan itu :D</p>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*d9M_MBivGkJIf8lqVUlQ5w.png" alt="Local VCS"></p>
-<p>Namun permasalahan baru muncul, yaitu apabila kita bekerja dalam team sehingga dibutuhkan kolaborasi dengan team member yang lainnya dalam menyelesaikan suatu file, maka penggunaan Local VCS sudah tidak dapat diterapkan. Karena alasan tersebut berkembanglah metode Centralized VCS.</p>
-<p>Dengan menggunakan metode ini, maka pencatatan perubahan file akan disimpan pada server sehingga pengguna yang ingin mengakses pencatatan hanya cukup melakukan akses kepada server sehingga memudahkan pengguna apabila ingin berkolaborasi dengan team member lainnya.</p>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*SDj9TdcYCPGuH7ZcB6SJbg.png" alt="Centralized VCS"></p>
-<p>Namun masih terdapat masalah yang muncul yaitu apabila server yang digunakan untuk menyimpan pencatatan mengalami masalah, maka seluruh pencatatan yang sudah disimpan tidak akan ada gunanya. Seluruh file yang ada berpotensi hilang. Lalu berkembanglah sistem yang digunakan dewasa ini, Distributed VCS.</p>
-<p>Apa yang menjadi perbedaan pada Distributed VCS adalah kita tidak hanya mengupload pencatatan pada server, tetapi yang kita lakukan sebenarnya adalah mirroring pencatatan local yang ada ke server, sehingga setiap pengguna sebenarnya masih memiliki penatatan yang tersimpan, sehingga apabila terjadi masalah dengan server maka team member lainnya masih dapat melakukan back-up.</p>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*KJ7hP_B3MZOHyqXLOWxs6g.png" alt="Distributed VCS"></p>
-<p>Banyak sekali VCS yang bisa digunakan, diantaranya adalah Git, Mercurial, Bazaar, dan Darcs. Dalam PPL kali ini, yang digunakan adalah Git dengan server menggunakan GitLab.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -824,10 +378,8 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/03/07/migration-script-menggunakan-umzug-untuk-sequelize/" class="post-title-link" itemprop="url">Migration Script menggunakan [Umzug] untuk [Sequelize]</a>
+          <h2 class="post-title" itemprop="name headline">Migration Script menggunakan [Umzug] untuk [Sequelize]
+
               
             
           </h2>
@@ -927,9 +479,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>Migration script adalah script yang digunakan untuk memudahkan kita dalam melakukan migrasi baik berupa environment atau hanya sekedar database. Dalam studi kasus PPL kali ini, kelompok kami hanya akan melakukan migrasi database. Walaupun terkesan sederhana tetapi migration script sangat bermanfaat dan bisa memudahkan pekerjaan.</p>
 </blockquote>
 <h1 id="Migration-Script-itu-apa"><a href="#Migration-Script-itu-apa" class="headerlink" title="Migration Script itu apa?"></a>Migration Script itu apa?</h1><p>Secara sederhana, migration script dapat membantu kita untuk melakukan migrasi, bisa berupa perubahan versi aplikasi ataupun pindah server. Ilustrasi sederhana yang dapat menggambarkan migration script adalah pindah rumah. Pada saat pindah dari rumah, maka kita akan berkemas untuk memindahkan barang-barang yang ada di dalam rumah kita untuk dipindahkan ke rumah yang baru. Bayangkan proses memindahkan barang-barang yang ada, hingga pemasangan di rumah yang baru dilakukan oleh sebuah migration script sehingga mempermudah kita dalam pindah rumah.</p>
@@ -947,8 +497,6 @@
 <p>Berikut adalah salah satu contoh module migrasi untuk membuat table employees.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">   up: <span class="function"><span class="keyword">function</span> (<span class="params">QueryInterface, Sequelize</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> QueryInterface.createTable(<span class="string">"employees"</span>, &#123;</span><br><span class="line">         id: &#123;</span><br><span class="line">            type: Sequelize.INTEGER,</span><br><span class="line">            primaryKey: <span class="literal">true</span>,</span><br><span class="line">            autoIncrement: <span class="literal">true</span></span><br><span class="line">         &#125;,</span><br><span class="line">         email: &#123;</span><br><span class="line">            type: Sequelize.STRING,</span><br><span class="line">            unique: <span class="literal">true</span>,</span><br><span class="line">            allowNull: <span class="literal">false</span></span><br><span class="line">         &#125;,</span><br><span class="line">         password: &#123;</span><br><span class="line">            type: Sequelize.STRING,</span><br><span class="line">            allowNull: <span class="literal">false</span></span><br><span class="line">         &#125;,</span><br><span class="line">         name: &#123;</span><br><span class="line">            type: Sequelize.STRING,</span><br><span class="line">            allowNull: <span class="literal">false</span></span><br><span class="line">         &#125;,</span><br><span class="line">         join_date: &#123;</span><br><span class="line">            type: Sequelize.DATE,</span><br><span class="line">            allowNull: <span class="literal">false</span></span><br><span class="line">         &#125;,</span><br><span class="line">         place_of_birth: Sequelize.STRING,</span><br><span class="line">         date_of_birth: &#123;</span><br><span class="line">            type: Sequelize.DATEONLY,</span><br><span class="line">            allowNull: <span class="literal">false</span></span><br><span class="line">         &#125;,</span><br><span class="line">         is_admin: &#123;</span><br><span class="line">            type: Sequelize.BOOLEAN,</span><br><span class="line">            allowNull: <span class="literal">false</span></span><br><span class="line">         &#125;,</span><br><span class="line">         salary: &#123;</span><br><span class="line">            type: Sequelize.INTEGER,</span><br><span class="line">            allowNull: <span class="literal">false</span></span><br><span class="line">         &#125;,</span><br><span class="line">         retire_date: Sequelize.DATE</span><br><span class="line">      &#125;, &#123;&#125;); </span><br><span class="line">   &#125;,</span><br><span class="line">   down: <span class="function"><span class="keyword">function</span> (<span class="params">QueryInterface</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> QueryInterface.dropTable(tableName);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h1 id="Kesimpulan"><a href="#Kesimpulan" class="headerlink" title="Kesimpulan"></a>Kesimpulan</h1><p>Dalam pembuatan migration script sebagai bagian dari provisioning script dalam tugas PPL ini, saya sangat menyadari betapa penting dan bermanfaatnya penggunaaan migration script dalam memudahkan pekerjaan kita apabila melakukan migrasi aplikasi.</p>
 
-          
-        
       
     </div>
 
@@ -969,14 +517,42 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/ppl/" rel="tag"># PPL</a>
+          
+            <a href="/tags/umzug/" rel="tag"># Umzug</a>
+          
+            <a href="/tags/sequelize/" rel="tag"># Sequelize</a>
+          
+            <a href="/tags/node-js/" rel="tag"># Node.js</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/21/version-control-kenapa/" rel="prev" title="Version Control, Kenapa?">
+                Version Control, Kenapa? <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -986,14 +562,15 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -1014,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -1149,6 +735,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Migration-Script-itu-apa"><span class="nav-number">1.</span> <span class="nav-text">Migration Script itu apa?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sequelize"><span class="nav-number">2.</span> <span class="nav-text">Sequelize</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model"><span class="nav-number">2.1.</span> <span class="nav-text">Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Umzug"><span class="nav-number">3.</span> <span class="nav-text">Umzug</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Instalasi"><span class="nav-number">3.0.1.</span> <span class="nav-text">Instalasi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Penggunaan"><span class="nav-number">3.0.2.</span> <span class="nav-text">Penggunaan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementasi"><span class="nav-number">3.0.3.</span> <span class="nav-text">Implementasi</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Kesimpulan"><span class="nav-number">4.</span> <span class="nav-text">Kesimpulan</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1288,6 +891,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
