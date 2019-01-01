@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-180x180.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-32x32.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo-16x16.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo-500x500.png?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":16,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Sinon.js adalah tools yang sangat bermanfaat apabila kita ingin melakukan unit test untuk Java Scripts. Sinon menyediakan fitur untuk melakukan Spies, Stubs, dan Mock. Apa saja itu? Mari kita bahas l">
+<meta name="keywords" content="Testing,Node.js,Sinon.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Best Practice Testing using Sinon.js">
+<meta property="og:url" content="http://kuwali.github.io/2017/04/05/best-practice-testing-using-sinon-js/index.html">
+<meta property="og:site_name" content="kowan&#39;s note">
+<meta property="og:description" content="Sinon.js adalah tools yang sangat bermanfaat apabila kita ingin melakukan unit test untuk Java Scripts. Sinon menyediakan fitur untuk melakukan Spies, Stubs, dan Mock. Apa saja itu? Mari kita bahas l">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*ZPTKqBnd5T_7ClhRz6izGw.jpeg">
+<meta property="og:updated_time" content="2019-01-01T03:45:23.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Best Practice Testing using Sinon.js">
+<meta name="twitter:description" content="Sinon.js adalah tools yang sangat bermanfaat apabila kita ingin melakukan unit test untuk Java Scripts. Sinon menyediakan fitur untuk melakukan Spies, Stubs, dan Mock. Apa saja itu? Mari kita bahas l">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1600/1*ZPTKqBnd5T_7ClhRz6izGw.jpeg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://kuwali.github.io/2017/04/05/best-practice-testing-using-sinon-js/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Best Practice Testing using Sinon.js | kowan's note</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131468917-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131468917-1');
+</script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kowan's note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Loading ...</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kuwali.github.io/2017/04/05/best-practice-testing-using-sinon-js/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kustiawanto Halim">
+      <meta itemprop="description" content="Personal Blog">
+      <meta itemprop="image" content="https://instagram.fkno3-1.fna.fbcdn.net/vp/6adf83be365b08f6c3e290ecf408a525/5CD7B1B3/t51.2885-19/s320x320/35534218_194410941230217_6917300677114855424_n.jpg?_nc_ht=instagram.fkno3-1.fna.fbcdn.net&_nc_cat=109">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kowan's note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Best Practice Testing using Sinon.js
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-04-05 00:00:00" itemprop="dateCreated datePublished" datetime="2017-04-05T00:00:00+07:00">2017-04-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-01 10:45:23" itemprop="dateModified" datetime="2019-01-01T10:45:23+07:00">2019-01-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-science/note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Sinon.js adalah tools yang sangat bermanfaat apabila kita ingin melakukan unit test untuk Java Scripts. Sinon menyediakan fitur untuk melakukan Spies, Stubs, dan Mock. Apa saja itu? Mari kita bahas lebih lanjut.</p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*ZPTKqBnd5T_7ClhRz6izGw.jpeg" alt="I Must Complete The Mission with Sinon.spy()"></p>
+<h1 id="Pengantar"><a href="#Pengantar" class="headerlink" title="Pengantar"></a>Pengantar</h1><p>Membuat testing code dengan menggunakan banyak sekali functional lain seperti Ajax, networking, database, dan dependency lainnya tentu saja akan sangat sulit. Misalnya saja apabila aplikasi kita melakukan perintah Ajax atau networking lainnya, kita harus memastikan server yang akan memberikan response pada request kita. Selain itu penggunaan database harus dipastikan bahwa database kita sudah siap untuk memberikan data. Hal ini berarti test yang dibuat akan semakin sulit karena kita harus mempersiapkan environment agar test berjalan lancar.</p>
+<p>Sinon.js hadir menyelesaikan masalah yang ada dengan kemampuannya yaitu spies, stubs dan mocks.</p>
+<h1 id="Contoh-fungsi"><a href="#Contoh-fungsi" class="headerlink" title="Contoh fungsi"></a>Contoh fungsi</h1><p>Agar mempermudah penjelasan, mari kita mulai dengan ilustrasi fungsi sebagai berikut.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupNewUser</span>(<span class="params">info, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> user = &#123;</span><br><span class="line">    name: info.name,</span><br><span class="line">    nameLowercase: info.name.toLowerCase()</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    Database.save(user, callback);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">    callback(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Fungsi diatas akan menerima dua parameter yaitu sebuah objek info berisi data yang akan dimasukkan kedalam database dan sebuah callback function. Dalam kasus ini, fungsi save yang dilakukan dalam Database adalah untuk memasukkan data yang ada kedalam database.</p>
+<h1 id="Spies-Stubs-dan-Mocks"><a href="#Spies-Stubs-dan-Mocks" class="headerlink" title="Spies, Stubs, dan Mocks"></a>Spies, Stubs, dan Mocks</h1><p>Spies, Stubs, dan Mocks sama saja dengan pemeran pengganti (stunts) dalam film. Apa yang mereka lakukan adalah sebagai pengganti dari fungsi yang membutuhkan dependency yang ada pada kode kita.</p>
+<h2 id="Spies"><a href="#Spies" class="headerlink" title="Spies"></a>Spies</h2><p>Spies digunakan untuk memdapatkan informasi mengenai function call. Lebih lanjut, spy dapat memberitahukan berapa banyak sebuah fungsi dipanggil, apa saja argumen yang dipanggil, apa return value dan error yang di throw, dll.</p>
+<p>Spy adalah pilihan yang baik untuk test yang ingin melakukan verifikasi terhadap suatu pemanggilan fungsi. Dikombinasikan dengan assertions, kita bisa mengecek berapa banyak perbedaan yang tidak sesuai dengan harapan test kita.</p>
+<p>Biasa spies digunakna untuk:</p>
+<ul>
+<li>Mengetahui berapa banyak sebuah fungsi dipanggil</li>
+<li>Mengetahui argumen apa saja yang dipanggil bersamaan dengan fungsi</li>
+</ul>
+<p>Ada beberapa fungsi yang bisa digunakan untuk mengecek berapa kali suatu fungsi dipanggil diantaranya:</p>
+<ul>
+<li><code>sinon.assert.callCount</code> akan menghitung berapa kali fungsi dipanggil</li>
+<li><code>sinon.assert.calledOnce</code> akan memastikan fungsi dipanggil tepat satu kali</li>
+<li><code>sinon.assert.notCalled</code> akan memastikan fungsi tidak dipanggil</li>
+</ul>
+<p>Misalnya berikut adalah test code yang kita miliki:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'should call save once'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> save = sinon.spy(Database, <span class="string">'save'</span>);</span><br><span class="line"></span><br><span class="line">  setupNewUser(&#123; <span class="attr">name</span>: <span class="string">'test'</span> &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; &#125;);</span><br><span class="line"></span><br><span class="line">  save.restore();</span><br><span class="line">  sinon.assert.calledOnce(save);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Selain itu, untuk mengetahui argumen apa yang dipanggil bersamaan dengan fungsi kita bisa menggunakan sinon.assert.calledWith. Berikut adalah contohnya:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'should pass object with correct values to save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> save = sinon.spy(Database, <span class="string">'save'</span>);</span><br><span class="line">  <span class="keyword">var</span> info = &#123; <span class="attr">name</span>: <span class="string">'test'</span> &#125;;</span><br><span class="line">  <span class="keyword">var</span> expectedUser = &#123;</span><br><span class="line">    name: info.name,</span><br><span class="line">    nameLowercase: info.name.toLowerCase()</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  setupNewUser(info, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; &#125;);</span><br><span class="line"></span><br><span class="line">  save.restore();</span><br><span class="line">  sinon.assert.calledWith(save, expectedUser);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Masih banyak hal lain yang dapat di-assert oleh spy, pada penjelasan ini saya tidak menjelaskan keseluruhan hal yang dapat dilakukan.</p>
+<p>Spy tidak akan mengubah behavior dari fungsi, namun apabila kita ingin mengubahnya maka kita bisa menggunakan stub.</p>
+<h2 id="Stubs"><a href="#Stubs" class="headerlink" title="Stubs"></a>Stubs</h2><p>Stubs sebenarnya menyerupai spies, hanya saja stubs akan menimpa fungsi. Stub bisa saja mengubah behavior dari fungsi seperti mengembalukan nilai tertentu atau mengembalikan error. Stub biasa digunakan untuk:</p>
+<ul>
+<li>Apabila ingin menimpa fungsi yang membutuhkan dependency lain</li>
+<li>Apabila ingin melakukan error trigger</li>
+</ul>
+<p>Apabila ingin menimpa fungsi yang membutuhkan dependency lain, seperti Database.save pada contoh, kita bisa menggunakan stub, sehingga dalam kasus ini, kita tidak perlu memastikan Database sudah siap digunakan dengan pengaturan yang ada, tetapi akan dibuatkan fungsi pengganti oleh Sinon. Berikut adalah contohnya:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'should pass object with correct values to save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> save = sinon.stub(Database, <span class="string">'save'</span>);</span><br><span class="line">  <span class="keyword">var</span> info = &#123; <span class="attr">name</span>: <span class="string">'test'</span> &#125;;</span><br><span class="line">  <span class="keyword">var</span> expectedUser = &#123;</span><br><span class="line">    name: info.name,</span><br><span class="line">    nameLowercase: info.name.toLowerCase()</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  setupNewUser(info, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; &#125;);</span><br><span class="line"></span><br><span class="line">  save.restore();</span><br><span class="line">  sinon.assert.calledWith(save, expectedUser);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Dengan menimpa fungsi Database.save kita tidak perlu lagi bersusah payah memikirkan mengenai kesiapan database dalam menangani test.</p>
+<p>Selain itu, apabila ingin melakukan testing terhadap error, kita juga bisa menggunakan stub. Berikut adalah contohnya:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'should pass the error into the callback if save fails'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> expectedError = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'oops'</span>);</span><br><span class="line">  <span class="keyword">var</span> save = sinon.stub(Database, <span class="string">'save'</span>);</span><br><span class="line">  save.throws(expectedError);</span><br><span class="line">  <span class="keyword">var</span> callback = sinon.spy();</span><br><span class="line"></span><br><span class="line">  setupNewUser(&#123; <span class="attr">name</span>: <span class="string">'foo'</span> &#125;, callback);</span><br><span class="line"></span><br><span class="line">  save.restore();</span><br><span class="line">  sinon.assert.calledWith(callback, expectedError);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Mocks"><a href="#Mocks" class="headerlink" title="Mocks"></a>Mocks</h2><p>Setelah mengetahui penjelasan mengenai spies dan stubs, sekarang kita akan berkenalan dengan mocks. Mocks pada dasarnya adalah yang paling sakti diantara spies dan stubs, karena mocks dapat melakukan apa yang dapat dilakukan oleh spies dan stubs. Tapi tentu saja terdapat trade off yang siap dibayar apabila menggunakan mocks, yaitu apabila salah dalam penulisan akan mudah sekali terjadi error pada test yang ada karena kita mendefinisikan ekspektasi di awal. Maksudnya dalam mocks kita bisa saja mendefinisikan multiple assertion yang mana harus dicek secara pasti agar tidak terjadi kesalahan. Langsung saja berikut adalah contoh penggunaan mocks:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'should pass object with correct values to save only once'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> info = &#123; <span class="attr">name</span>: <span class="string">'test'</span> &#125;;</span><br><span class="line">  <span class="keyword">var</span> expectedUser = &#123;</span><br><span class="line">    name: info.name,</span><br><span class="line">    nameLowercase: info.name.toLowerCase()</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">var</span> database = sinon.mock(Database);</span><br><span class="line">  database.expects(<span class="string">'save'</span>).once().withArgs(expectedUser);</span><br><span class="line"></span><br><span class="line">  setupNewUser(info, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; &#125;);</span><br><span class="line"></span><br><span class="line">  database.verify();</span><br><span class="line">  database.restore();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Dalam kasus ini kita memastikan agar fungsi dipanggil sekali dengan fungsi <code>once()</code> dan argument yang digunakan harus sesuai dengan fungsi <code>withArgs()</code>. Jadi dengan mocks, kita dapat menggunakan multiple assertion yang sesuai dengan fungsi yang kita mau test.<br>Tips</p>
+<p>Apabila kita menggunakan fungsi yang sama-sama akan distub dan digunakan dalam beberapa test berbeda, kita dapat melakukan shared stubs dengan fungsi <code>beforeEach()</code>. Sebagai contoh:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'Something'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> save;</span><br><span class="line">  beforeEach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    save = sinon.stub(Database, <span class="string">'save'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  afterEach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    save.restore();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'should do something'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//you can use the stub in tests by accessing the variable</span></span><br><span class="line">    save.yields(<span class="string">'something'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Yang harus dipastikan adalah setelah pemanggilan <code>afterEach()</code> harus melakukan clean up fungsi stub dengan perintah <code>restore()</code>.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/testing/" rel="tag"># Testing</a>
+          
+            <a href="/tags/node-js/" rel="tag"># Node.js</a>
+          
+            <a href="/tags/sinon-js/" rel="tag"># Sinon.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/22/kenapa-menggunakan-tdd/" rel="next" title="Kenapa menggunakan TDD?">
+                <i class="fa fa-chevron-left"></i> Kenapa menggunakan TDD?
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://instagram.fkno3-1.fna.fbcdn.net/vp/6adf83be365b08f6c3e290ecf408a525/5CD7B1B3/t51.2885-19/s320x320/35534218_194410941230217_6917300677114855424_n.jpg?_nc_ht=instagram.fkno3-1.fna.fbcdn.net&_nc_cat=109" alt="Kustiawanto Halim">
+            
+              <p class="site-author-name" itemprop="name">Kustiawanto Halim</p>
+              <p class="site-description motion-element" itemprop="description">Personal Blog</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/kuwali" title="GitHub &rarr; https://github.com/kuwali" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:kustiawanto.halim@gmail.com" title="E-Mail &rarr; mailto:kustiawanto.halim@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/kuwali_bakwan" title="Twitter &rarr; https://twitter.com/kuwali_bakwan" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/kuwali_bakwan" title="Instagram &rarr; https://instagram.com/kuwali_bakwan" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Pengantar"><span class="nav-number">1.</span> <span class="nav-text">Pengantar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Contoh-fungsi"><span class="nav-number">2.</span> <span class="nav-text">Contoh fungsi</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spies-Stubs-dan-Mocks"><span class="nav-number">3.</span> <span class="nav-text">Spies, Stubs, dan Mocks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spies"><span class="nav-number">3.1.</span> <span class="nav-text">Spies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stubs"><span class="nav-number">3.2.</span> <span class="nav-text">Stubs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mocks"><span class="nav-number">3.3.</span> <span class="nav-text">Mocks</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kustiawanto Halim</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c24fe6f29690323" async="async"></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
